@@ -1,0 +1,67 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+import quadraticequation.QuadraticEquationFXMLController;
+
+public class QuadraticEquationTests {
+    @Test
+    public void isNumber1dot2(){
+        assertEquals(true, QuadraticEquationFXMLController.isNumber("1.2"));
+    }
+    @Test
+    public void isNumber0123(){
+        assertEquals(true, QuadraticEquationFXMLController.isNumber("0123"));
+    }
+    @Test
+    public void isNumberMinus1(){
+        assertEquals(true, QuadraticEquationFXMLController.isNumber("-1"));
+    }
+    @Test
+    public void isNumberMinus01dot2(){
+        assertEquals(true, QuadraticEquationFXMLController.isNumber("-01.2"));
+    }
+    @Test
+    public void isNumberText(){
+        assertEquals(false, QuadraticEquationFXMLController.isNumber("Ala"));
+    }
+    @Test
+    public void isNumberTextWithNumber(){
+        assertEquals(false, QuadraticEquationFXMLController.isNumber("Ala12"));
+    }
+    @Test
+    public void isNumberEmpty(){
+        assertEquals(false, QuadraticEquationFXMLController.isNumber(""));
+    }
+    @Test
+    public void isNumber1dot(){
+        assertEquals(false, QuadraticEquationFXMLController.isNumber("1."));
+    }
+    @Test
+    public void calculateDeltaPlus(){
+        assertEquals(16.0, QuadraticEquationFXMLController.calculateDelta(1, 0, -4), 0.0);
+    }
+    @Test
+    public void solveEquation2Zeros(){
+        double[] exptectedResult = {-2.0, 2.0};
+        double[] result = QuadraticEquationFXMLController.solveEquation(1, 0, QuadraticEquationFXMLController.calculateDelta(1, 0, -4));
+        assertEquals(exptectedResult[0], result[0], 0.0);
+        assertEquals(exptectedResult[1], result[1], 0.0);
+    }
+    @Test
+    public void calculateDeltaMinus(){
+        assertEquals(-36.0, QuadraticEquationFXMLController.calculateDelta(1, 0, 9), 0.0);
+    }
+    @Test
+    public void solveEquationNoZeros(){
+        assertEquals(0, QuadraticEquationFXMLController.solveEquation(1, 0, QuadraticEquationFXMLController.calculateDelta(1, 0, 9)).length);
+    }
+    @Test
+    public void calculateDeltaZero(){
+        assertEquals(0.0, QuadraticEquationFXMLController.calculateDelta(4, 4, 1), 0.0);
+    }
+    @Test
+    public void solveEquation1Zero(){
+        double[] result = QuadraticEquationFXMLController.solveEquation(4, 4, QuadraticEquationFXMLController.calculateDelta(4, 4, 1));
+        assertEquals(1, result.length);
+        assertEquals(-0.5, result[0], 0.0);
+    }
+}
