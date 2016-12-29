@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="497.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quadraticequation.QuadraticEquationFXMLController">
+   <children>
+      <BorderPane layoutY="7.0" prefHeight="236.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="57.0" prefWidth="497.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="aTextField" layoutX="67.0" layoutY="16.0" prefHeight="25.0" prefWidth="64.0" />
+                  <Label layoutX="142.0" layoutY="20.0" text="x^2 + " />
+                  <TextField fx:id="bTextField" layoutX="187.0" layoutY="16.0" prefHeight="25.0" prefWidth="64.0" />
+                  <Label layoutX="265.0" layoutY="20.0" text="x + " />
+                  <TextField fx:id="cTextField" layoutX="296.0" layoutY="16.0" prefHeight="25.0" prefWidth="64.0" />
+                  <Label layoutX="373.0" layoutY="20.0" text="= 0" />
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="54.0" prefWidth="497.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="startButton" layoutX="134.0" layoutY="15.0" mnemonicParsing="false" text="Policz" />
+                  <Button fx:id="exitButton" layoutX="288.0" layoutY="15.0" mnemonicParsing="false" text="Wyjscie" />
+               </children>
+            </Pane>
+         </bottom>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="67.0" layoutY="54.0" text="Wynik:" />
+                  <TextField fx:id="resultTextField" editable="false" layoutX="120.0" layoutY="50.0" prefWidth="280.0"/>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
