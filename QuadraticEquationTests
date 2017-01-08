@@ -1,44 +1,79 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import quadraticequation.QuadraticEquationFXMLController;
-
+/**
+ * Klasa <code>QuadraticEquationTest</code> reprezentuje zestaw testów 
+ * sprawdzających poprawność obliczeń równania kwadratowego dla różnych możliwych 
+ * przypadków. 
+ * @author AleksanderSklorz
+ */
 public class QuadraticEquationTests {
+    /**
+     * Test sprawdzający czy dodatnia liczba rzeczywiście jest liczbą. 
+     */
     @Test
-    public void isNumber1dot2(){
+    public void isNumberPositive(){
         assertEquals(true, QuadraticEquationFXMLController.isNumber("1.2"));
     }
+    /**
+     * Test sprawdzający czy liczba zaczynająca się zerem jest liczbą. 
+     */
     @Test
-    public void isNumber0123(){
+    public void isNumberStartingWithZero(){
         assertEquals(true, QuadraticEquationFXMLController.isNumber("0123"));
     }
+    /**
+     * Test sprawdzający czy liczba ujemna jest liczbą. 
+     */
     @Test
-    public void isNumberMinus1(){
+    public void isNumberNegativeNumber(){
         assertEquals(true, QuadraticEquationFXMLController.isNumber("-1"));
     }
+    /**
+     * Test sprawdzający czy ujemny ułamek zaczynajacy się od zera jest liczbą. 
+     */
     @Test
-    public void isNumberMinus01dot2(){
+    public void isNumberMinusNegativeFractionStartingWithZero(){
         assertEquals(true, QuadraticEquationFXMLController.isNumber("-01.2"));
     }
+    /**
+     * Test sprawdzający czy tekst nie jest liczbą. 
+     */
     @Test
     public void isNumberText(){
         assertEquals(false, QuadraticEquationFXMLController.isNumber("Ala"));
     }
+    /**
+     * Test sprawdzający czy tekst połączony z liczbą jest liczbą. 
+     */
     @Test
     public void isNumberTextWithNumber(){
         assertEquals(false, QuadraticEquationFXMLController.isNumber("Ala12"));
     }
+    /**
+     * Test sprawdzający czy pusty ciąg znaków jest nie jest liczbą. 
+     */
     @Test
     public void isNumberEmpty(){
         assertEquals(false, QuadraticEquationFXMLController.isNumber(""));
     }
+    /**
+     * Test sprawdzający czy ułamek bez części ułamkowej (z samą kropka) nie jest liczbą. 
+     */
     @Test
-    public void isNumber1dot(){
+    public void isNumberFractionWithoutFractionalPart(){
         assertEquals(false, QuadraticEquationFXMLController.isNumber("1."));
     }
+    /**
+     * Test sprawdzający poprawność obliczenia delty dodatniej. 
+     */
     @Test
     public void calculateDeltaPlus(){
         assertEquals(16.0, QuadraticEquationFXMLController.calculateDelta(1, 0, -4), 0.0);
     }
+    /**
+     * Test sprawdzający poprawność obliczenia równania kwadratowego z dwoma miejscami zerowymi. 
+     */
     @Test
     public void solveEquation2Zeros(){
         double[] exptectedResult = {-2.0, 2.0};
@@ -46,18 +81,30 @@ public class QuadraticEquationTests {
         assertEquals(exptectedResult[0], result[0], 0.0);
         assertEquals(exptectedResult[1], result[1], 0.0);
     }
+    /**
+     * Test sprawdzający poprawność obliczenia delty ujemnej. 
+     */
     @Test
     public void calculateDeltaMinus(){
         assertEquals(-36.0, QuadraticEquationFXMLController.calculateDelta(1, 0, 9), 0.0);
     }
+    /**
+     * Test sprawdzający poprawność obliczenia równania kwadratowego bez miejsc zerowych 
+     */
     @Test
     public void solveEquationNoZeros(){
         assertEquals(0, QuadraticEquationFXMLController.solveEquation(1, 0, QuadraticEquationFXMLController.calculateDelta(1, 0, 9)).length);
     }
+    /**
+     * Test sprawdzający poprawność obliczenia delty równej zero. 
+     */
     @Test
     public void calculateDeltaZero(){
         assertEquals(0.0, QuadraticEquationFXMLController.calculateDelta(4, 4, 1), 0.0);
     }
+    /**
+     * Test sprawdzający poprawność obliczenia równania kwadratowego z jednym miejscem zerowym. 
+     */
     @Test
     public void solveEquation1Zero(){
         double[] result = QuadraticEquationFXMLController.solveEquation(4, 4, QuadraticEquationFXMLController.calculateDelta(4, 4, 1));
