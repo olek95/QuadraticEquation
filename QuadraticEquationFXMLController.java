@@ -6,7 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
+/**
+ * Klasa <code>QuadraticEquationFXMLController</code> reprezentuje obliczenia 
+ * dotyczące równania kwadratowego. 
+ * @author AleksanderSklorz 
+ */
 public class QuadraticEquationFXMLController implements Initializable {
     @FXML
     private Button startButton, exitButton;
@@ -31,9 +35,23 @@ public class QuadraticEquationFXMLController implements Initializable {
             System.exit(0);
         });
     }    
+    /**
+     * Oblicza deltę dla równania kwadratowego. 
+     * @param a parametr a
+     * @param b parametr b
+     * @param c parametr c
+     * @return delta 
+     */
     public static double calculateDelta(double a, double b, double c){
         return b * b - 4 * a * c;
     }
+    /**
+     * Rozwiązuje równanie kwadratowe. 
+     * @param a parametr a
+     * @param b parametr b
+     * @param delta delta 
+     * @return tablica miejsc zerowych. Rozmiar tablicy jest równy ilości miejsc zerowych 
+     */
     public static double[] solveEquation(double a, double b, double delta){
         double[] x;
         if(delta > 0){
@@ -51,6 +69,11 @@ public class QuadraticEquationFXMLController implements Initializable {
         x = new double[0];
         return x;
     }
+    /**
+     * Sprawdza czy podany tekst jest liczbą. 
+     * @param text tekst 
+     * @return true jeśli tekst jest liczbą, false w przeciwnym przypadku 
+     */
     public static boolean isNumber(String text){
         return text.matches("-?[0-9]+(\\.[0-9]+|[0-9]*)");
     }
